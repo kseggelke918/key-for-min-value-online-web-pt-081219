@@ -3,15 +3,13 @@
 require "pry"
 
 def key_for_min_value(name_hash)
-  value_hash = []
-  name_hash.each do |name, values|
-    value_hash << values  
+  smallest_value = 0 
+  smallest_key = ""
+  name_hash.each do |key, value|
+    if smallest_value == 0 || value < smallest_value 
+      smallest_value = value 
+      smallest_key = key
+    end
   end 
-  value_hash.sort do |value|
-    i = 0 
-    if name_hash[i] == value 
-      return name_hash[i]
-      i += 1 
-    end 
-  end 
-end
+  smallest_key
+end 
